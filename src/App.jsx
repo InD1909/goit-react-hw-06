@@ -14,10 +14,6 @@ const App = () => {
   const contacts = useSelector(selectContacts);
   const filter = useSelector(selectNameFilter);
 
-  const filteredContacts = contacts.filter((contact) =>
-    contact.name.toLowerCase().includes(filter.toLowerCase())
-  );
-
   const handleAddContact = (newContact) => {
     dispatch(addContact(newContact));
   };
@@ -35,7 +31,7 @@ const App = () => {
       <h1>Phonebook</h1>
       <ContactForm onAddContact={handleAddContact} />
       <SearchBox filter={filter} onFilter={handleFilterChange} />
-      <ContactList contacts={filteredContacts} onDelete={handleDeleteContact} />
+      <ContactList onDelete={handleDeleteContact} />
     </div>
   );
 };
